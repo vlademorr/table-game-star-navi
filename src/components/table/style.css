@@ -1,0 +1,16 @@
+table{
+    margin: 10% auto;
+    border: 2px solid gainsboro;
+    border-spacing: 0px;
+}
+
+td{
+    height: 40px;
+    width: 40px;
+    border: 1px solid gainsboro;
+}
+
+.choose{
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,10 @@
+.app{
+    display: flex;
+}
+.leftSide{
+    width: 50%;
+}
+.rightSide{
+    width: 50%;
+    margin: 20px auto;
+}
