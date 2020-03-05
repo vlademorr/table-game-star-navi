@@ -1,5 +1,19 @@
-.firstElements{
+.first_elements{
     margin: 20px auto;
     display: flex;
     justify-content: space-around;
+}
+
+.input_name{
+    border-style: solid;
+    border-color: #007bff;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.play_btn{
+    border-style: solid;
+    border-color: #007bff;
+    border-radius: 4px;
+    text-align: center;
 }

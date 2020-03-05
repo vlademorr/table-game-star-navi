@@ -1,58 +1,25 @@
-import { getRandomElement } from "../helpers";
-
+import {
+        getRandomElement,randomEL,
+        TableElConstructor, tableFunc
+        } from "../helpers";
 
 const initialState = {
     gameModes: null,
     gameModeClicked: null,
     playerName: null,
-    tableElements: null,
+    tableElements: [],
     winners: null,
-    currentRandomId: null
-};
-
-const randomEL = (id, tableElements, color = "blue") => {
-
-    let table = [...tableElements];
-    table.forEach((row) =>{
-        row.forEach((item) =>{
-            if(item.id === id){
-                item.isSelected = true;
-                item.color = color;
-            }
-        });
-    });
-    return table
-};
-
-const TableElConstructor = function(id){
-    this.color = "white";
-    this.playerClicked = false;
-    this.computerClicked = false;
-    this.id = id;
-    this.isSelected = false;
-};
-
-const tableFunc = (rows) => {
-    let row = [];
-    let table = [];
-    for(let i = 1; i <= rows * rows; i++){
-        row.push(new TableElConstructor(i))
-    }
-
-    let arr = [];
-
-    row.forEach((item) => {
-        arr.push(item);
-        if(item.id % rows === 0){
-            table.push(arr);
-            arr = [];
-        }
-    });
-    return table
+    currentRandomId: null,
+    winner: ''
 };
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case 'GAME_OVER':
+            return  {
+                ...state,
+                winner: action.payload
+            };
         case 'GAME_MODE_GET_REQUEST':
             return  {
                 ...state,
@@ -62,7 +29,7 @@ const reducer = (state = initialState, action) => {
             return  {
                 ...state,
                 gameModeClicked: action.payload,
-                tableElements: tableFunc(action.payload.field)
+                tableElements: tableFunc(action.payload.field, TableElConstructor)
             };
         case 'PLAYER_NAME_INPUT':
             return  {
@@ -80,6 +47,13 @@ const reducer = (state = initialState, action) => {
             return  {
                 ...state,
                 winners: action.payload
+            };
+
+        case 'CLEAR_GAME_DATA':
+            return  {
+                ...state,
+                winner: '',
+                tableElements: tableFunc(state.tableElements.length, TableElConstructor)
             };
         case 'COMPUTER_WIN_COLOR':
         case 'PLAYER_WIN_COLOR':

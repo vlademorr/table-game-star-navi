@@ -1,7 +1,16 @@
+.table_container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
 table{
-    margin: 10% auto;
+    align-self: center;
+    width: fit-content;
+    display: flex;
     border: 2px solid gainsboro;
     border-spacing: 0px;
+    margin-left: 70px;
 }
 
 td{
@@ -13,4 +22,12 @@ td{
 .choose{
     display: flex;
     justify-content: center;
+    color: dimgray;
+    margin-left: 110px;
+}
+.winner{
+    display: flex;
+    justify-content: center;
+    color: dimgray;
+    margin-left: 70px;
 }

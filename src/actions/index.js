@@ -47,6 +47,19 @@ const playerWin = (color) => {
     };
 };
 
+const gameOver = (player) => {
+    return {
+        type: 'GAME_OVER',
+        payload: player
+    };
+};
+
+const clearStore = () => {
+    return {
+        type: 'CLEAR_GAME_DATA'
+    };
+};
+
 export {
     gameModeAction,
     gameModeClicked,
@@ -54,5 +67,7 @@ export {
     randomTableElement,
     winnersAction,
     computerWin,
-    playerWin
+    playerWin,
+    gameOver,
+    clearStore
 };
